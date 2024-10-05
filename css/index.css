@@ -6,6 +6,7 @@
 
 body {
     background-color: #eaeaea; /* Fondo gris claro */
+    overflow-x: hidden; /* Evita el scroll horizontal */
 }
 
 #contenedor {
@@ -23,17 +24,20 @@ header {
     background-color: #c40000e3; /* Fondo rojo */
     padding: 0 20px;
     color: white;
-    text-align: center; /* Cambiado de left a center */
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
-    display: flex; /* Usamos flexbox */
-    justify-content: center; /* Centramos el contenido horizontalmente */
-    align-items: center; /* Alineamos verticalmente */
-    gap: 50px; /* Espacio entre el logo y el menú de navegación */
+    display: flex;
+    justify-content: space-between; /* Distribuye espacio entre el logo y los enlaces */
+    align-items: center;
+    gap: 50px;
     height: 70px;
+    width: 100%; /* Asegura que ocupe todo el ancho de la pantalla */
+    box-sizing: border-box; /* Asegura que el padding no rompa el diseño */
+    overflow-x: hidden; /* Evita que el fondo se salga */
 }
 
 h1 {
-    margin: 0; /* Eliminamos el margen del título */
+    margin: 0;
     font-size: 2em;
     margin-bottom: 20px;
 }
@@ -44,12 +48,13 @@ h1 {
 }
 
 #logo {
-    height: 30px; /* Ajusta la altura del logo */
-    width: 120px;
+    height: 30px;
+    width: auto; /* Ajusta el tamaño del logo automáticamente */
 }
 
 nav {
-    display: flex; /* Usamos flex para organizar los enlaces */
+    display: flex;
+    flex-wrap: wrap; /* Permite que los enlaces se ajusten en pantallas pequeñas */
 }
 
 nav a {
@@ -57,7 +62,7 @@ nav a {
     text-decoration: none;
     margin: 0 15px;
     font-weight: bold;
-    line-height: 70px; /* Alinea verticalmente los enlaces */
+    line-height: 70px;
 }
 
 h3 {
@@ -75,18 +80,20 @@ p {
 }
 
 #imgarticulo {
-    float: left; /* Imagen alineada a la izquierda */
+    float: left;
     margin-right: 20px;
-    width: 430px;
-    height: 250px;
-    border-radius: 10px; /* Bordes redondeados */
+    width: 100%; /* Ajusta el ancho al 100% del contenedor */
+    max-width: 430px; /* Máximo ancho para pantallas grandes */
+    height: auto;
+    border-radius: 10px;
 }
 #imgarticulo2 {
-    display: block; /* Asegura que la imagen sea un bloque */
-    margin: 0 auto 10px; /* Centra la imagen y agrega margen en la parte inferior */
-    width: 820px;
-    height: 500px;
-    border-radius: 10px; /* Bordes redondeados */
+    display: block;
+    margin: 0 auto 10px;
+    width: 100%; /* Asegura que se ajuste al contenedor */
+    max-width: 820px;
+    height: auto;
+    border-radius: 10px;
 }
 
 #readmore{
@@ -97,41 +104,41 @@ p {
 /* Media Queries para Responsividad */
 @media (max-width: 768px) {
     #contenedor {
-        width: 90%; /* Ajusta el ancho para pantallas más pequeñas */
+        width: 90%;
         padding: 10px;
     }
 
     header {
-        flex-direction: column; /* Apila logo y navegación en columnas */
+        flex-direction: column;
         gap: 10px;
         height: auto;
     }
 
     nav {
-        flex-direction: column; /* Coloca los enlaces en columnas */
+        flex-direction: column;
         text-align: center;
+        flex-wrap: nowrap; /* En móviles no queremos que los enlaces se agrupen */
     }
 
     nav a {
-        margin: 10px 0; /* Espacio entre los enlaces en móvil */
-        line-height: normal; /* Resetea el alineamiento vertical */
+        margin: 10px 0;
+        line-height: normal;
     }
 
     #imgarticulo {
-        float: none; /* Evita que las imágenes floten en pantallas pequeñas */
-        display: block;
-        width: 100%; /* Ajusta el ancho de las imágenes */
-        height: auto; /* Ajusta la altura de las imágenes */
-        margin: 20px 0; /* Margen superior e inferior */
+        float: none;
+        width: 100%; /* Asegura que la imagen ocupe todo el ancho */
+        height: auto;
+        margin: 20px 0;
     }
 
     #imgarticulo2 {
-        width: 100%; /* Imagen ocupa todo el ancho */
+        width: 100%;
         height: auto;
     }
 
     h1 {
-        font-size: 1.5em; /* Reduce el tamaño del título en pantallas pequeñas */
+        font-size: 1.5em;
     }
 }
 
@@ -145,7 +152,12 @@ p {
     }
 
     #contenedor {
-        width: 100%; /* Usamos el 100% del ancho en pantallas muy pequeñas */
+        width: 100%;
         margin: 10px 0;
+    }
+
+    #imgarticulo, #imgarticulo2 {
+        width: 100%;
+        height: auto;
     }
 }
